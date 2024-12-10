@@ -1,3 +1,4 @@
+from utility import *
 class matrix:
     def __init__(self,m11,m12,m13,m21,m22,m23,m31,m32,m33):
         self.m11 = m11; self.m12 = m12; self.m13 = m13
@@ -26,6 +27,19 @@ class vector:
  
 '''
         print(str_self)
-players=vector(10,10,10)
+R = int(ask('How many rounds per match?'))
+coop = int(ask("How many cooperaters to start?"))
+copy = int(ask("How many copycats to start?"))
+cheat = int(ask("How many cheaters to start?"))
+players=vector(coop,copy,cheat)
 players.print()
 
+pointMatrix = matrix()
+
+def step(player_vector:vector):
+    pointVector = player_vector.multiplyMatrix(pointMatrix)
+    newPlayerVector = player_vector
+    if pointVector.cheat > pointVector.copy > pointVector.coop:
+        newPlayerVector.cheat +=5
+        newPlayerVector.coop -=5
+   # if pointVector.coop 
